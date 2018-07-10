@@ -9,6 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wilson.nfc_android.R;
+import com.wilson.nfc_android.api.LoginApi;
+import com.wilson.nfc_android.model.UserInfo;
+import com.wilson.nfc_android.net.RetrofitManager;
+
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -33,7 +40,34 @@ public class FragmentOne extends Fragment {
                              Bundle savedInstanceState) {
 
         Log.d(TAG, "FragmentOne: "+i);
+
+        RetrofitManager.getInstance().createReq(LoginApi.class).getUserInfo(21)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<UserInfo>() {
+            @Override
+            public void onCompleted() {
+                Log.d("wilson","www");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d("wilson",e.toString());
+            }
+
+            @Override
+            public void onNext(UserInfo userInfo) {
+                Log.d("wilson ",userInfo.getMsg());
+            }
+
+
+        });
+
+
+
         return inflater.inflate(R.layout.layout_one,container,false);
+
+
+
     }
 
 }

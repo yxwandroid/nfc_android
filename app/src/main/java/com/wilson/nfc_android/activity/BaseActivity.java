@@ -1,4 +1,4 @@
-package com.wilson.nfc_android;
+package com.wilson.nfc_android.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
