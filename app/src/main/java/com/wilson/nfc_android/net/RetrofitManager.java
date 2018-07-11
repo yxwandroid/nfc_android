@@ -4,20 +4,16 @@ package com.wilson.nfc_android.net;
 import com.wilson.nfc_android.AppConfig;
 import com.wilson.nfc_android.net.interceptor.RspCheckInterceptor;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
- * @author zjh
- * @date 2016/6/29
+ * 网络请求封装
  */
 public class RetrofitManager {
     private static RetrofitManager mRetrofitManager;
@@ -49,18 +45,6 @@ public class RetrofitManager {
         builder.writeTimeout(20, TimeUnit.SECONDS);
         builder.retryOnConnectionFailure(true);
 
-
-//        builder.interceptors().add(new Interceptor() {
-//            @Override
-//            public Response intercept(Chain chain) throws IOException {
-//
-//                Request request = chain.request();
-//
-//                Request.Builder builder1 = request.newBuilder().addHeader("Connection","close");
-//                Request build = builder1.build();
-//                return chain.proceed(build);
-//            }
-//        });
 
         OkHttpClient client = builder.build();
 

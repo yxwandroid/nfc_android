@@ -13,6 +13,8 @@ import com.wilson.nfc_android.api.LoginApi;
 import com.wilson.nfc_android.model.UserInfo;
 import com.wilson.nfc_android.net.RetrofitManager;
 
+import java.util.ArrayList;
+
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -26,6 +28,8 @@ import rx.schedulers.Schedulers;
 
 public class FragmentOne extends Fragment {
 
+
+//    ArrayList
 
     private static final String TAG = FragmentOne.class.getName();
     private  static  int i =0;
@@ -65,8 +69,6 @@ public class FragmentOne extends Fragment {
 
 
         return inflater.inflate(R.layout.layout_one,container,false);
-
-
 
     }
 

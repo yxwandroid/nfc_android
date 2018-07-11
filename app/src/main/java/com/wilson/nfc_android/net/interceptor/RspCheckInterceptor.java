@@ -14,8 +14,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * @author zjh
- * @date 2016/8/31
+ *
+ * 拦截器
  */
 public class RspCheckInterceptor implements Interceptor {
 

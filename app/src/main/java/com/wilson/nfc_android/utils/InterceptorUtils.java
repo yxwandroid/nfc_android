@@ -14,8 +14,8 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * @author zjh
- * @date 2016/9/2
+ *
+ * 拦截器
  */
 public class InterceptorUtils {
     private static final Charset UTF8 = Charset.forName("UTF-8");
