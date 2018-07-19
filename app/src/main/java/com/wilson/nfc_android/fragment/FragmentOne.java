@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wilson.nfc_android.R;
-import com.wilson.nfc_android.api.LoginApi;
-import com.wilson.nfc_android.model.UserInfo;
+import com.wilson.nfc_android.api.UserApi;
+import com.wilson.nfc_android.model.responsemodel.UserInfo;
 import com.wilson.nfc_android.net.RetrofitManager;
-
-import java.util.ArrayList;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -45,26 +43,26 @@ public class FragmentOne extends Fragment {
 
         Log.d(TAG, "FragmentOne: "+i);
 
-        RetrofitManager.getInstance().createReq(LoginApi.class).getUserInfo(21)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<UserInfo>() {
-            @Override
-            public void onCompleted() {
-                Log.d("wilson","www");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.d("wilson",e.toString());
-            }
-
-            @Override
-            public void onNext(UserInfo userInfo) {
-                Log.d("wilson ",userInfo.getMsg());
-            }
-
-
-        });
+//        RetrofitManager.getInstance().createReq(UserApi.class).getUserInfo(21)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<UserInfo>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.d("wilson","www");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Log.d("wilson",e.toString());
+//            }
+//
+//            @Override
+//            public void onNext(UserInfo userInfo) {
+//                Log.d("wilson ",userInfo.getMsg());
+//            }
+//
+//
+//        });
 
 
 

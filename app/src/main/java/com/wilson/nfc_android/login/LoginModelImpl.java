@@ -1,11 +1,12 @@
 package com.wilson.nfc_android.login;
 
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.wilson.nfc_android.api.LoginApi;
-import com.wilson.nfc_android.model.UserInfo;
+import com.wilson.nfc_android.api.UserApi;
+import com.wilson.nfc_android.model.requestModel.User;
+import com.wilson.nfc_android.model.responsemodel.UserInfo;
+import com.wilson.nfc_android.model.responsemodel.WrapperRspEntity;
 import com.wilson.nfc_android.net.RetrofitManager;
 
 import rx.Observer;
@@ -29,29 +30,51 @@ public class LoginModelImpl implements LoginModel {
             return;
         }
 
-        RetrofitManager.getInstance().createReq(LoginApi.class).getUserInfo(21)
+//        RetrofitManager.getInstance().createReq(UserApi.class).getUserInfo(21)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<UserInfo>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.d("wilson","www");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                listener.onError();
+//                Log.d("wilson",e.toString());
+//            }
+//
+//            @Override
+//            public void onNext(UserInfo userInfo) {
+//
+//                listener.onSuccess();
+//
+//                Log.d("wilson ",userInfo.getMsg());
+//            }
+//
+//
+//
+
+
+        User user = new User("wilson", "wilson");
+
+        RetrofitManager.getInstance().createReq(UserApi.class).login(user)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<UserInfo>() {
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<WrapperRspEntity<UserInfo>>() {
             @Override
             public void onCompleted() {
-                Log.d("wilson","www");
+
             }
 
             @Override
             public void onError(Throwable e) {
-                listener.onError();
-                Log.d("wilson",e.toString());
+
             }
 
             @Override
-            public void onNext(UserInfo userInfo) {
-
-                listener.onSuccess();
-
-                Log.d("wilson ",userInfo.getMsg());
+            public void onNext(WrapperRspEntity<UserInfo> userInfoWrapperRspEntity) {
+                Log.d("wilson ",userInfoWrapperRspEntity.getData().getUsername()+"-------"+userInfoWrapperRspEntity.getData());
             }
-
-
         });
 
     }
