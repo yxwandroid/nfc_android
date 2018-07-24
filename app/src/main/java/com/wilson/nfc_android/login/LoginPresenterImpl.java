@@ -8,6 +8,7 @@ package com.wilson.nfc_android.login;
  *    确保 Model层不直接操作View层。如果没有这一接口在LoginPresenterImpl实现的话，
  *    LoginPresenterImpl 只有View和Model的引用那么Model怎么把结果告诉View呢？
  */
+
 public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener {
     private LoginView loginView;
     private LoginModel loginModel;

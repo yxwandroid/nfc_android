@@ -75,6 +75,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
             default:
                 break;
             case R.id.button:
+
                 loginPresenter.validateCredentials(userName.getText().toString(),password.getText().toString());
                 break;
         }
